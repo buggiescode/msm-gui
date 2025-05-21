@@ -6,7 +6,39 @@
   Go back
 </a>
 
+<div>
+  <a href="/delete_actor/<%= @the_actor.id %>">
+    Delete actor
+  </a>
+</div>
+
 <hr>
+
+<form action="/update_actor/<%= @the_actor.id %>" method="post">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<%= @the_actor.name %>">
+  </div>
+
+  <div>
+    <label for="dob">Date of birth</label>
+    <input type="text" name="dob" id="dob" value="<%= @the_actor.dob %>">
+  </div>
+  
+  <div>
+    <label for="bio">Description</label>
+    <input type="text" name="bio" id="bio" value="<%= @the_actor.bio %>">
+  </div>
+  
+  <div>
+    <label for="image">Image</label>
+    <input type="text" name="image" id="image" value="<%= @the_actor.image %>">
+  </div>
+
+  <button>
+     Update actor
+  </button>
+</form>
 
 <dl>
   <dt>
@@ -87,19 +119,19 @@
 
     <% matching_movies = Movie.where({ :id => m_id }) %>
 
-    <% the_movie = matching_movies.at(0) %>
+    <% the_actor = matching_movies.at(0) %>
 
     <tr>
       <td>
-        <%= the_movie.title %>
+        <%= the_actor.title %>
       </td>
 
       <td>
-        <%= the_movie.year %>
+        <%= the_actor.year %>
       </td>
 
       <td>
-        <% d_id = the_movie.director_id %>
+        <% d_id = the_actor.director_id %>
         
         <% matching_directors = Director.where({ :id => d_id }) %>
         
@@ -113,7 +145,7 @@
       </td>
 
       <td>
-        <a href="/movies/<%= the_movie.id %>">
+        <a href="/movies/<%= the_actor.id %>">
           Show details
         </a>
       </td>
